@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import yfinance as yf
+
 usdthb = yf.download("THB=X", period="1d")["Close"].iloc[-1]
 st.set_page_config(layout="wide")
 
