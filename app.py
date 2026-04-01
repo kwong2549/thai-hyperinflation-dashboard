@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 import yfinance as yf
-
+usdthb = yf.download("THB=X", period="1d")["Close"].iloc[-1]
 st.set_page_config(layout="wide")
 
 st.title("🇹🇭 Advanced Hyperinflation Dashboard (Thailand)")
@@ -27,7 +27,7 @@ def currency_score(x):
 
 currency = currency_score(latest_usdthb)
 
-# Manual inputs (บางตัวต้องใช้ judgment)
+
 st.sidebar.header("Manual Inputs")
 
 cpi = st.sidebar.slider("CPI (%)", 0.0, 50.0, 6.0)
@@ -95,7 +95,7 @@ st.subheader("Market Data")
 st.line_chart(usdthb["Close"])
 st.line_chart(gold["Close"])
 st.line_chart(oil["Close"])
-
+st.line_chart(usdthb_history)
 # ===== PORTFOLIO =====
 st.subheader("Recommended Allocation")
 st.bar_chart(pd.Series(alloc))
